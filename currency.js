@@ -20,6 +20,15 @@ secondCurrency.addEventListener("change", getCurrency);
 // }
 
 
+fetch(`https://v6.exchangerate-api.com/v6/66767c0d52ba9f48aae77c9e/latest/usd`)
+        .then(response => response.json())
+        .then(response => {
+            // console.log(response.conversion_rates[secondCurrency.value]);
+            outputValue = response.conversion_rates["TRY"];
+
+            output.value = outputValue;
+        })
+
 function getCurrency(e) {
     fetch(`https://v6.exchangerate-api.com/v6/66767c0d52ba9f48aae77c9e/latest/${firstCurrency.value}`)
         .then(response => response.json())
